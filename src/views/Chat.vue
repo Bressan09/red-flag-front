@@ -1,6 +1,10 @@
 <template>
-  <v-container fluid class="grey lighten-3" style="align-items: stretch">
-    <v-row>
+  <v-container
+    fluid
+    class="grey lighten-3"
+    style="display: flex; flex: 1 1 auto; height: 100%;"
+  >
+    <v-row style="max-height: 85vh">
       <v-col cols="3">
         <v-sheet rounded="lg">
           <v-list color="transparent">
@@ -29,7 +33,7 @@
         </v-sheet>
       </v-col>
 
-      <v-col cols="9">
+      <v-col cols="9" style="overflow: auto; height: 100%;">
         <!--v-form @submit.prevent="sendMessage">
           <v-col style="padding:0">
             <v-list two-line shaped fill-height>
@@ -67,15 +71,17 @@
             <v-text-field label="Message" v-model="message"></v-text-field>
           </v-row>
         </!--v-form-->
-
-        <v-list two-line shaped style="overflow: scroll">
+        <v-list
+          two-line
+          shaped
+          style="overflow: auto; height: 100%; flex-wrap: wrap;"
+        >
           <template v-for="(item, index) in messages">
             <v-subheader
               v-if="item.header"
               :key="item.header"
               v-text="item.header"
             />
-
             <v-divider
               v-else-if="item.divider"
               :key="index"
